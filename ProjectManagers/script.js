@@ -8,18 +8,20 @@ const skeletonsOfProjects = {
     _: ["index.html"],
     style: ["style.css", ],
     scripts: ["script.js"]
+  },
+  complex_project: {
+    _: ["index.html", "package-lock.json", "README.md"],
+    style: ["styleButton.css", "styleFooter.css", "styleForm.css"],
+    manager: ["BaseManager.js", "GameManager.js"],
+    scripts: ["scriptMain.js", "scriptNotMain.js"]
   }
 };
 
-createSimpleWebProject = (handler, callback) => {
-  callback(skeletonsOfProjects);
-};
 
-createBootstrapProject = (handler, callback) => {
+createProject = (handler, callback) => {
   callback(skeletonsOfProjects);
 };
 
 module.exports = {
-  createSimpleWebProject,
-  createBootstrapProject
+  createProject
 };

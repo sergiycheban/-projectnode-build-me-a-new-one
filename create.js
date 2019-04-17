@@ -1,7 +1,7 @@
 const fs = require("fs");
 const projectManagers = require("./ProjectManagers/script");
 
-projectManagers.createBootstrapProject("something", (data) => {
+projectManagers.createProject("something", (data) => {
   for (var i in data) {
     if (i == process.argv[2]) {
       const inArgumentIndex = process.argv.indexOf("-in");
@@ -21,7 +21,14 @@ projectManagers.createBootstrapProject("something", (data) => {
         }
         for (let index = 0; index < data[i][r].length; index++) {
           var folder = r != "_" ? `${r}/` : ``;
-          var text = fs.readFileSync("./Templates/" + i + "/" + folder + data[i][r][index]).toString();
+          var text;
+          try {
+            if (process.argv[5] != "empty") {
+              text = fs.readFileSync("./Templates/" + i + "/" + folder + data[i][r][index]).toString();
+            }
+          } catch (err) {
+            text = "";
+          }
           console.log("./Templates/" + i + "/" + folder + data[i][r][index])
           fs.writeFile(`${inArgumentContent}/${folder}${data[i][r][index]}`, text, function (err) {
             if (err) {
@@ -33,5 +40,4 @@ projectManagers.createBootstrapProject("something", (data) => {
       }
     }
   }
-
 });
