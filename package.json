@@ -1,0 +1,15 @@
+{
+  "name": "node-github-user-download",
+  "version": "1.0.0",
+  "description": "Test script dor github",
+  "main": "script.js",
+  "dependencies": {
+    "node-fetch": "^2.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "(script.js)"
+  },
+  "author": "Sergey Cheban",
+  "license": "ISC"
+}
