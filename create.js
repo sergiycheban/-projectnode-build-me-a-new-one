@@ -21,7 +21,9 @@ projectManagers.createBootstrapProject("something", (data) => {
         }
         for (let index = 0; index < data[i][r].length; index++) {
           var folder = r != "_" ? `${r}/` : ``;
-          fs.writeFile(`${inArgumentContent}/${folder}${data[i][r][index]}`, "Hey there!", function (err) {
+          var text = fs.readFileSync("./Templates/" + i + "/" + folder + data[i][r][index]).toString();
+          console.log("./Templates/" + i + "/" + folder + data[i][r][index])
+          fs.writeFile(`${inArgumentContent}/${folder}${data[i][r][index]}`, text, function (err) {
             if (err) {
               return console.log(err);
             }
