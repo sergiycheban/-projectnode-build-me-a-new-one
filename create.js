@@ -13,24 +13,24 @@ projectManagers.createProject("something", (data) => {
       fs.mkdirSync(inArgumentContent, {
         recursive: true
       });
-      for (var r in data[i]) {
-        if (r != "_") {
-          fs.mkdirSync(`${inArgumentContent}/${r}`, {
+      for (var item in data[i]) {
+        if (item != "_") {
+          fs.mkdirSync(`${inArgumentContent}/${item}`, {
             recursive: true
           });
         }
-        for (let index = 0; index < data[i][r].length; index++) {
-          var folder = r != "_" ? `${r}/` : ``;
-          var text;
+        for (let index = 0; index < data[i][item].length; index++) {
+          var folder = item != "_" ? `${item}/` : ``;
+          var text = "";
           try {
             if (process.argv[5] != "empty") {
-              text = fs.readFileSync("./Templates/" + i + "/" + folder + data[i][r][index]).toString();
+              text = fs.readFileSync("./Templates/" + i + "/" + folder + data[i][item][index]).toString();
             }
           } catch (err) {
             text = "";
           }
-          console.log("./Templates/" + i + "/" + folder + data[i][r][index])
-          fs.writeFile(`${inArgumentContent}/${folder}${data[i][r][index]}`, text, function (err) {
+          console.log("./Templates/" + i + "/" + folder + data[i][item][index])
+          fs.writeFile(`${inArgumentContent}/${folder}${data[i][item][index]}`, text, function (err) {
             if (err) {
               return console.log(err);
             }
