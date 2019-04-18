@@ -5,7 +5,7 @@ projectManagers.createProject("something", (data) => {
   for (var i in data) {
     if (i == process.argv[2]) {
       const inArgumentIndex = process.argv.indexOf("-in");
-      var inArgumentContent = "__system_download__";
+      var inArgumentContent = "New Project";
       if (inArgumentIndex != "-1") {
         inArgumentContent = process.argv[inArgumentIndex + 1];
       }
